@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
     server.vm.box = "centos/7"
     server.vm.hostname = "big-data-meta"
     server.vm.network "private_network", ip: "192.168.56.9"
-    server.vm.provision "shell", path: "scripts/postgresql.sh"
+    server.vm.provision "shell", path: "scripts/provisioning.sh"
     server.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".git/"
   end
 end
