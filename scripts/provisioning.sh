@@ -41,3 +41,16 @@ ln -s /vagrant/db_meta/sql_templates  /var/lib/pgsql/10/data/sql_templates
 psql -U postgres -d postgres -a -w -f /vagrant/db_meta/system.sql
 psql -U meta_worker -d meta -a -w -f /vagrant/db_meta/ddl_tables_1.sql
 psql -U meta_worker -d meta -a -w -f /vagrant/db_meta/dml_tables_1.sql
+
+
+# python
+yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+yum update
+yum install -y python36u python36u-libs python36u-devel python36u-pip
+python3.6 -V
+
+# project
+yum install git -y
+cd /home/vagrant
+git clone https://github.com/elessarelfstone/oradump.git
+pip3.6 install -r oradump/requirements.txt
