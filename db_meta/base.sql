@@ -1,11 +1,18 @@
+create database meta;
+create user meta_worker with encrypted password 'meta';
+alter user meta_worker with superuser;
+grant all privileges on database meta to meta_worker;
+
+
+create schema if not exists meta
+  authorization meta_worker;
+
 -- drop before
 drop table if exists meta.data_source;
 drop table if exists meta.data_source_table;
 drop table if exists meta.data_source_type;
 drop table if exists meta.storage_type;
 
-create schema if not exists meta
-  authorization meta_worker;
 
 --источники данных
 create table meta.data_source (
@@ -84,3 +91,6 @@ $$;
 alter function meta.get_text_document(varchar) owner to meta_worker;
 
 
+
+
+--\c meta
