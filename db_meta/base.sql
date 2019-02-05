@@ -2,7 +2,7 @@ create database meta;
 create user meta_worker with encrypted password 'meta';
 alter user meta_worker with superuser;
 grant all privileges on database meta to meta_worker;
-
+\c meta
 
 create schema if not exists meta
   authorization meta_worker;
@@ -23,6 +23,7 @@ create table meta.data_source (
    conn_detail          JSONB                not null,
    code                 VARCHAR(20)          not null,
    params               JSONB                not null,
+   is_active            BOOL                 not null,
    constraint PK_DATA_SOURCE primary key (data_source_id),
    constraint DATA_SRC_CODE unique (code)
 );
@@ -90,7 +91,3 @@ $$;
 
 alter function meta.get_text_document(varchar) owner to meta_worker;
 
-
-
-
---\c meta
