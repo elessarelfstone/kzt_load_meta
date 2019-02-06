@@ -7,6 +7,8 @@ insert into meta.data_source_type(data_source_type_id, name, code, params)
     values (3,'Siebel CRM', 'crm', NULL);
 insert into meta.data_source_type(data_source_type_id, name, code, params)
     values (4,'Siebel CRM 2', 'crm2', NULL);
+insert into meta.data_source_type(data_source_type_id, name, code, params)
+    values (5,'ИАСППР', 'iasppr', NULL);
 
 
 
@@ -14,8 +16,8 @@ insert into meta.data_source_type(data_source_type_id, name, code, params)
 insert into meta.storage_type(storage_type_id, name, code, type_code)
     values (1,'Реалиционная база Oracle', 'oracle', 'rdbms');
 
--- источники
 
+-- источники
 insert into meta.data_source(data_source_id, data_source_type_id, storage_type_id, name, conn_detail, code, params, is_active)
     values (1, 1, 1, 'АСР БИТТл Алматы', '{"tns": "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST =  10.10.70.63)(PORT = 1521)) ) (CONNECT_DATA = (SERVICE_NAME =  orcl1) ) )"}', 'asr_ala', '{"rdt_id": "6", "server_id": "90"}', True);
 
