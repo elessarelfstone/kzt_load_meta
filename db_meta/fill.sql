@@ -1,6 +1,6 @@
 -- типы источников данных
 insert into meta.data_source_type(data_source_type_id, name, code, params)
-    values (1,'Автоматизированная система расчетов БИТТл', 'asr', NULL);
+    values (1,'Автоматизированная система расчетов БИТТл', 'asr', '{"user": "reporter", "pass" : "ciuyrhvv"}');
 insert into meta.data_source_type(data_source_type_id, name, code, params)
     values (2,'BiMEG', 'bmg', NULL);
 insert into meta.data_source_type(data_source_type_id, name, code, params)
@@ -11,11 +11,9 @@ insert into meta.data_source_type(data_source_type_id, name, code, params)
     values (5,'ИАСППР', 'iasppr', NULL);
 
 
-
 -- типы хранения
 insert into meta.storage_type(storage_type_id, name, code, type_code)
     values (1,'Реалиционная база Oracle', 'oracle', 'rdbms');
-
 
 -- источники
 insert into meta.data_source(data_source_id, data_source_type_id, storage_type_id, name, conn_detail, code, params, is_active)
@@ -33,10 +31,8 @@ insert into meta.data_source(data_source_id, data_source_type_id, storage_type_i
 insert into meta.data_source(data_source_id, data_source_type_id, storage_type_id, name, conn_detail, code, params, is_active)
     values (5, 1, 1, 'АСР БИТТл ОДТ Алматы', '{"tns": "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST =  10.8.29.5)(PORT = 1521)) ) (CONNECT_DATA = (SERVICE_NAME =  taldasr) ) )"}', 'asr_tal', '{"rdt_id": "6", "server_id": "75"}', True);
 
-
 insert into meta.data_source(data_source_id, data_source_type_id, storage_type_id, name, conn_detail, code, params, is_active)
     values (6, 1, 1, 'АСР БИТТл ГТС Астана', '{"tns": "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.72.1.50)(PORT = 1521)) ) (CONNECT_DATA = (SERVICE_NAME = orcl.Astanatelecom) ) )"}', 'asr_ast', '{"rdt_id": "1", "server_id": "73"}', True);
-
 
 insert into meta.data_source(data_source_id, data_source_type_id, storage_type_id, name, conn_detail, code, params, is_active)
     values (7, 1, 1, 'АСР БИТТл Кокшетау', '{"tns": "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST =   10.71.200.6)(PORT = 1521)) ) (CONNECT_DATA = (SERVICE_NAME = koksasr.Akmola) ) )"}', 'asr_kok', '{"rdt_id": "1", "server_id": "71"}', True);
