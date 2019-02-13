@@ -91,3 +91,25 @@ $$;
 
 alter function meta.get_text_document(varchar) owner to meta_worker;
 
+
+CREATE OR REPLACE FUNCTION meta.get_sql_template(table_name CHARACTER VARYING, src_code CHARACTER VARYING)
+  RETURNS TEXT AS $$
+  -- Set the end read to some big number because we are too lazy to grab the length
+  -- and it will cut of at the EOF anyway
+  DECLARE
+    script_template TEXT;
+  BEGIN
+    select
+      dstb.sql_template into script_template
+    from meta.data_source_table dstb,
+       meta.data_source_type dst
+    where dst.data_source_type_id = dstb.data_source_type_id and
+        dst.code = src_code and
+        dstb.name = table_name;
+
+    RETURN script_template;
+  END;
+
+$$ LANGUAGE plpgsql;
+
+alter function meta.get_sql_template(varchar, varchar) owner to meta_worker;
